@@ -1,3 +1,12 @@
+/*
+ * Michael Cheng
+ * CS 202 Homework 1 
+ * Winter 2016
+ *
+ * adjListNode.h
+ *
+ */
+
 #include"adjListNode.h"
 #include<iostream>
 #include<cstring>
