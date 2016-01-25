@@ -1,0 +1,29 @@
+County : Multonomah
+Average Age : 15 Years Old
+Medium Household Income : 40,000 
+Common race : Asian, White, African American, Hispanic
+
+County : Clackamas
+Average Age : 17 Years Old
+Medium Household Income : 78,000
+Common race : Asian, White
+
+County : Ne Portland
+Average Age : 30 Years Old
+Medium Household Income : 30,000
+Common race : African American, Hispanic 
+
+County : Mars
+Average Age : 5000 Years Old
+Medium House Hold Income : 60000000 rupes
+Common race : Aliens and Jedis 
+
+County : Mars 2
+Average Age : 5000 Years Old
+Medium House Hold Income : 60000000 rupes
+Common race : Aliens and Jedis 
+
+County : Mars 3
+Average Age : 5000 Years Old
+Medium House Hold Income : 60000000 rupes
+Common race : Aliens and Jedis 
