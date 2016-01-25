@@ -3,7 +3,15 @@
  * CS 202 Homework 1 
  * Winter 2016
  *
- * adjListNode.h
+ * graph.cpp, implementation of prototypes from
+ * adjListNode.h. In this abstraction of an
+ * adjaceny list, each node will be an abstraction of
+ * average house hold infomration per that county, which is a node.
+ * the node will be inserted base on 2 gps cordinates, which will be 
+ * presented by an array. Thus this will be an array of linear linked list.
+ * AdjlistNode is a household information plus more, adjlist has a adjlist 
+ * node and my class graph (which is the location class) will have an array
+ * of adjlist head pointers .
  *
  */
 
@@ -14,11 +22,20 @@
 #include<cstdlib>
 using namespace std;
 
+/*
+ *  Household_inforation implementations
+ *
+ */
+
+
+//Constructor with an intialization list to intialize copy constructor dynamic memory 
 Household_information::Household_information():county(NULL),age_group_information(NULL),races(NULL),med_income(NULL)
 {
 
 }
 
+
+//Copy constructor
 Household_information::Household_information(char * co, char * age, char * ra, char * med)
 {
     county = new char [(strlen(co)+1)];
@@ -35,6 +52,9 @@ Household_information::Household_information(char * co, char * age, char * ra, c
 
 }
 
+
+//Copy constructor that takes in a Hosehold_information object. Has if statements 
+//to prevent from copying something that is not there
 Household_information::Household_information(const Household_information & from)
 {
     if(from.county)
@@ -60,11 +80,18 @@ Household_information::Household_information(const Household_information & from)
     }
 }
 
+
+//destructor, deallocate memory 
 Household_information::~Household_information()
 {
-
+    delete [] county;
+    delete [] age_group_information;
+    delete [] races;
+    delete [] med_income;
 }
 
+
+//display out contents of the household_infomration
 void Household_information::display()
 {
     cout << county<< endl;
@@ -73,53 +100,106 @@ void Household_information::display()
     cout << med_income << endl;
 }
 
+
+/*
+ * Household_informated implementation end
+ *
+ */
+
+
+/*
+ * adjListNode implementation
+ *
+ */
+
+
+//default constructor, intialized dest to 0 and next pointer to null
 adjListNode::adjListNode()
 {
 	dest = 0;
 	next = NULL;
 }
 
+
+//copy constructor, calls the baseclass intialization life
 adjListNode::adjListNode(char * c, char * a, char * r, char * m):Household_information(c,a,r,m)
 {
 
 }
 
+
+//copy constructor that passes an object of household information up to the base class copy consturctor
+//to copy in dynamic memory 
 adjListNode::adjListNode(const Household_information & to_copy):Household_information(to_copy)
 {
 
 }
 
 
+//destructor
 adjListNode::~adjListNode()
 {
+    if(next != NULL)
+    {
+        delete next;
+        next = NULL;
+
+    }
 
 }
 
+
+//return a pointer to the address of next pointer, allows other function to obtain
+//or set values of whatever next is pointed too. next here is a private member 
 adjListNode*&adjListNode::getNext()
 {
 	return next;
 }
 
+
+//set destination when inserting household object into the graph
 void adjListNode::setDest(int d)
 {
     dest = d;
 }
 
+
+//return the value of destination
 int adjListNode::getDest()
 {
     return dest;
 
 }
 
+
+/*
+ * AdjlistNode implementation End
+ *
+ */
+
+
+/* 
+ * AdjList implemetnation
+ *
+ */
+
+
+//Constructuor
 adjList::adjList()
 {
 	head = NULL;
 }
+
+
+//Destructor
 adjList::~adjList()
 {
 
 }
 
+
+//Set the value of head to null, used for intialization purposes within the 
+//graph class, which is a "has a" reletionship with this adjlist class
 void adjList::setHead()
 {
     head = NULL;
@@ -127,7 +207,20 @@ void adjList::setHead()
 }
 
 
+/*
+ * Adjlist impelmentedation end
+ *
+ */
 
+
+/*
+ * Graph impelmentation start
+ *
+ */
+
+
+//default constructor, constrcutrs an array of headpointers size 10,
+//then calls on the sethead function to set each function of head to null
 graph::graph()
 {
     vertex = 10;
@@ -140,17 +233,38 @@ graph::graph()
 
 }
 
+
+//destructor, calls on the remove_all fuction to delete this array of head pointers 
 graph::~graph()
 {
+    remove_all();
+}
+
+
+//used in destrutor, iterate through all elements of array and set each head pointer to null
+//then delete the array
+void graph::remove_all()
+{
+    for(int i = 0; i < 10; i++)
+    {
+        arrayList[i].setHead();
+    }
+    delete [] arrayList;
+
+
 
 }
 
+
+//returns the data value in head
 adjListNode*&adjList::returnHead()
 {
     return head;
 
 }
 
+
+//creates and return a new adjlistnode, with information that will be loaded from txt
 adjListNode * graph::new_adjListNode(int dest, char * c, char * a, char * r, char * m)
 {
     adjListNode *newDataNode = new adjListNode(c, a, r, m);
@@ -161,6 +275,8 @@ adjListNode * graph::new_adjListNode(int dest, char * c, char * a, char * r, cha
 
 }
 
+
+//build the graph of household. county household infomration will be inserted in random order
 void graph::g_setUp(int counter, char * c, char * a, char * r, char * m)
 {
     int randCord = rand() % 4;
@@ -168,6 +284,8 @@ void graph::g_setUp(int counter, char * c, char * a, char * r, char * m)
 
 }
 
+
+//load househould infomration from c.txt thhen inserts it into the adjacney list
 void graph::h_load()
 {
     int counter = 0;
@@ -185,7 +303,7 @@ void graph::h_load()
             load.getline(race, s, '\n');
             load.ignore(s, '\n');
             counter ++;
-
+            //counter will be the source and counter +1 will be the denstiation 
             addEdge(counter, counter+1, county, age, med, race);
         }
 
@@ -197,6 +315,9 @@ void graph::h_load()
 
 }
 
+
+//adding edge, takes in source, destintation as gps coordinates and dynamic char arrays
+//as infomration for the average household in the county 
 void graph::addEdge(int s, int d, char * c,  char * a, char * r, char * m)
 {
     adjListNode * newNode = new_adjListNode(d,c, a, r, m);
@@ -208,6 +329,9 @@ void graph::addEdge(int s, int d, char * c,  char * a, char * r, char * m)
     arrayList[d].returnHead() = newNode;
 }
 
+
+//crawls through the array of head pointers and prints everything in each elements
+//and also prints everything that is assoicated with each node within that array index
 void graph::printGraph()
 {
     for(int i = 0; i < vertex; i++)
@@ -228,4 +352,7 @@ void graph::printGraph()
 }
 
 
-
+/*
+ * Graph implementation end
+ *
+ */

@@ -15,6 +15,37 @@ school::~school()
 
 }
 
+void school::remove_all()
+{
+    node_dll * current = head;
+    while(current != NULL)
+    {
+        current = current -> get_next();
+        delete head;
+        head = current;
+
+    }
+
+    //head->get_next() = NULL;
+    //head->get_prev() = NULL;
+}
+
+/*
+void school::remove_all(node_dll * head)
+{
+    if(!head)
+    {
+        head = NULL;
+        return;
+    }
+    else
+    {
+        remove_all(head->get_next());
+        delete(head);
+    }
+
+}
+*/
 void school::insert_school(char * a, char * b, char * c, char * d, char * e)
 {
     node_dll * temp = new node_dll(a,b,c,d,e);
@@ -70,7 +101,11 @@ void school::load_s()
 
 void school::display_all()
 {
-    head->display();
+    if(!head)
+    {
+        cout << "No data here" << endl;
+        return;
+    }
     node_dll*current = head;
     while(current!=NULL)
     {

@@ -16,6 +16,7 @@ int main()
     s.display_all();
     s.h_load();
     s.printGraph();
-
+    s.remove_all();
+    s.display_all();
     return 0;
 }

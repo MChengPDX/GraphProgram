@@ -8,8 +8,10 @@ class school:public graph
     public:
         school();
         ~school();
-         void display_all();
+        void display_all();
         void load_s();
         void insert_school(char * school, char * age, char * class_num, char *  bestsize, char * bestage);
+        void remove_all(node_dll * head);
+        void remove_all();
 
 };

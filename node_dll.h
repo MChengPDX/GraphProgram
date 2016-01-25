@@ -1,7 +1,18 @@
+/*
+ * Michael Cheng
+ * CS 202 Homework 1
+ * Winter 2016
+ *
+ * node_dll.h
+ *
+ * Holds class abstraction for doubly linked list. This node_dll is
+ * dervied from school_infomration, which contains dynamic data for
+ * incoming school information.
+ *
+ */
 
 
-
-
+//Class abstraction for school information
 class School_information
 {
     private:
@@ -20,6 +31,9 @@ class School_information
 
 };
 
+
+//class abstraction for a node_dll, that will be used
+//in a doubly linked list to store school information 
 class node_dll:public School_information
 {
     private:

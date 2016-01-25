@@ -92,13 +92,23 @@ School_information::School_information(char * s, char * a, char * n,
 }
 
 
-//destructor 
+//destructor deallcationg memory that was use 
+//to store school infomration
+//
+//reminder: add if statements 
 School_information::~School_information()
 {
-
-
+   delete [] school_name;
+   delete [] age_group;
+   delete [] number_of_classes;
+   delete [] best_class_size;
+   delete [] age_group_best;
 }
 
+
+//displaying out the school information
+//using std cout and endl for good programming practice
+//avoid taking up the whole namespace 
 void School_information::display()
 {
     using std::cout;
@@ -111,6 +121,22 @@ void School_information::display()
     cout<<age_group_best<<endl;
 
 }
+
+/*
+ * End of class school_information implementation 
+ *
+ */
+
+
+/*
+ * class  node_dll implementation
+ * Will be used in class school, which will
+ * represent a doubly linked list abstraction to
+ * store school infomration
+ *
+ */
+
+
 
 node_dll::node_dll()
 {
