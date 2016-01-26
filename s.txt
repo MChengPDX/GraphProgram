@@ -1,29 +1,29 @@
 School Name: 1
 Age Group: 1
-Number of Classes:
-Best Class Size:
-Age Group Average Class Size:
+Number of Classes:1
+Best Class Size:1
+Age Group Average Class Size:1
 
 School Name: 2
 Age Group: 2
-Number of Classes:
-Best Class Size:
-Age Group Average Class Size:
+Number of Classes:2
+Best Class Size:2
+Age Group Average Class Size:2
 
 School Name: 3
 Age Group: 3
-Number of Classes:
-Best Class Size:
-Age Group Average Class Size:
+Number of Classes:3
+Best Class Size:3
+Age Group Average Class Size:3
 
 School Name: 4
 Age Group: 4
-Number of Classes:
-Best Class Size:
-Age Group Average Class Size:
+Number of Classes:4
+Best Class Size:4
+Age Group Average Class Size:4
 
 School Name: 5
 Age Group: 5
-Number of Classes:
-Best Class Size:
-Age Group Average Class Size:
+Number of Classes:5
+Best Class Size:5
+Age Group Average Class Size:5

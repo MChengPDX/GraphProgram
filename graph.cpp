@@ -98,6 +98,7 @@ void Household_information::display()
     cout << age_group_information <<endl;
     cout << races << endl;
     cout << med_income << endl;
+    return;
 }
 
 
@@ -338,7 +339,7 @@ void graph::printGraph()
     {
         
         adjListNode * temp = arrayList[i].returnHead();
-        cout << "List of vertex at " << i << endl;
+        cout << "List of vertex at " << i << "------------------------------" << endl;
         while(temp)
         {
             cout  << "At edge " << temp->getDest() << " ";
@@ -349,6 +350,7 @@ void graph::printGraph()
          }
             cout << endl;
     }
+    return;
 }
 
 

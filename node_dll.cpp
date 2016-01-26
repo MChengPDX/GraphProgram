@@ -119,6 +119,8 @@ void School_information::display()
     cout<<number_of_classes<<endl;
     cout<<best_class_size<<endl;
     cout<<age_group_best<<endl;
+    cout<<endl;
+    return;
 
 }
 

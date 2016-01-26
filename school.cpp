@@ -46,6 +46,35 @@ void school::remove_all(node_dll * head)
 
 }
 */
+
+int school::return_lenght()
+{
+    int counter = 1;
+    node_dll * current = head;
+    while(current != NULL)
+    {
+        current = current -> get_next();
+        counter = counter + 1;
+    }
+    using std::cout;
+    cout <<"The counter is " << counter << '\n';
+    return counter;
+}
+
+void school::search_3_school()
+{
+    int counter = 1;
+    node_dll * current = head;
+    while(current != NULL && counter != 4)
+    {
+        current->display();
+        current = current->get_next();
+        counter++;
+    }
+}
+
+
+
 void school::insert_school(char * a, char * b, char * c, char * d, char * e)
 {
     node_dll * temp = new node_dll(a,b,c,d,e);
