@@ -51,13 +51,14 @@ int school::return_lenght()
 {
     int counter = 1;
     node_dll * current = head;
-    while(current != NULL)
+
+    while(current->get_next() != NULL)
     {
         current = current -> get_next();
         counter = counter + 1;
     }
     using std::cout;
-    cout <<"The counter is " << counter << '\n';
+
     return counter;
 }
 
@@ -144,3 +145,45 @@ void school::display_all()
     }
 }
 
+void school::remove_one(int position)
+{
+    int lenght = return_lenght();
+    if(position > lenght)
+    {
+        cout << "The postion to delete is out od context " << endl;
+    }
+    else
+    {
+        node_dll * temp = head;
+        int counter = 1;
+        while(counter != position)
+        {
+            temp->display();
+            temp = temp -> get_next();
+            counter +=1;
+        }
+        cout << "This node will be deleted " << endl;
+        temp ->display();
+        if(temp->get_next() == NULL)
+        {
+            node_dll * temp2 = temp->get_prev();
+            delete temp;
+            temp2->get_next() = NULL;
+            return;
+        }
+        if(temp->get_prev() == NULL)
+        {
+            node_dll * temp2 = temp->get_next();
+            delete temp;
+            head = temp2;
+            return;
+        }
+        else
+        {
+            node_dll * back = temp->get_prev();
+            back->get_next() = temp->get_next();
+            delete temp;
+        }
+    }
+
+}

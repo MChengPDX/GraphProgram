@@ -6,5 +6,6 @@ class manager: public school
         void testLoadHouseHold();
         void testLoadSchool();
         void findSchool();
+        void testDelete();
 
 };
