@@ -3,7 +3,11 @@
  * CS 202 Homework 1 
  * Winter 2016
  *
- * manager.cp
+ * manager.cpp
+ *
+ * Holds implementation from prototypes in manager.h. In this manager
+ * class, it will provide test functions to see if txt files are loaded properly,
+ * to see if removes and display functions are loaded properly
  *
  */
  
@@ -11,6 +15,10 @@
 #include"manager.h"
 #include<iostream>
 
+/*
+ * Manager Implementation Start
+ *
+ */
 
 //Test function to check oif household information is loaded into the graph
 void manager::testLoadHouseHold()
@@ -60,6 +68,11 @@ void manager::findSchool()
     o.search_3_school();
 }
 
+
+//Testing deleting from doubly linked list. 
+//case 1 remove from head
+//case 2 remove from somewhere in the middle
+//case 3 remove a node from the end
 void manager::testDelete()
 {
     using std::cout;
@@ -92,4 +105,9 @@ void manager::testDelete()
     cout << "====================== Displaying after removing all =================" << endl;
     o.display_all();
 }
+
+/*
+ * Manager class implementation end
+ *
+ */
 

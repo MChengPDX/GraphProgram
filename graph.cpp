@@ -241,24 +241,25 @@ graph::~graph()
 //then delete the array
 void graph::remove_all()
 {
-    
-
-      
     for(int k = 0; k < 2; k++)
     {
+        //points to head
         adjListNode * temp = arrayList[k].returnHead();  
         while(temp!=NULL)
         {
+            //delete until all nodes are gone within that element 
             adjListNode * current = temp->getNext();
             delete temp;
+            //set current to the next node to be deleted 
             temp = current;
         }
     }
-    
+    // after deleting everything, set all head to null
     for(int i = 0; i < 10; i++)
     {
         arrayList[i].setHead();
     }
+    // then delete the array 
     delete [] arrayList;
     
 
@@ -277,10 +278,15 @@ adjListNode*&adjList::returnHead()
 //creates and return a new adjlistnode, with information that will be loaded from txt
 adjListNode * graph::new_adjListNode(int dest, char * c, char * a, char * r, char * m)
 {
+    //c = county
+    //a = average age
+    //r = race
+    //m = medium household income
     adjListNode *newDataNode = new adjListNode(c, a, r, m);
     newDataNode->setDest(dest);
     newDataNode->getNext()=NULL;
-
+    
+    //return a node to be added to the graph
     return newDataNode;
 
 }
@@ -298,8 +304,12 @@ void graph::g_setUp(int counter, char * c, char * a, char * r, char * m)
 //load househould infomration from c.txt thhen inserts it into the adjacney list
 void graph::h_load()
 {
+    //to count how many items has been inserted
     int counter = 0;
+    //set the size of char arrays per insertion of items from text file
     int s = 100;
+    //staticaclly allocated arrays for information, during inserting
+    //will call upon the constructors to push dynamic data up the hireachy
     char county[s], age[s], med[s], race[s];
     ifstream load;
     load.open("c.txt");

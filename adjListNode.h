@@ -13,7 +13,7 @@
 class Household_information
 {
     private:
-        char * county;
+        char * county; 
         char * age_group_information;
         char * races;
         char * med_income;
@@ -32,7 +32,7 @@ class Household_information
 class adjListNode:public Household_information
 {
 private:
-	int dest;
+	int dest; //stores destintaion for node, where the node should be inserted on the array
 	adjListNode * next;
 public:
 	adjListNode();
@@ -63,7 +63,7 @@ class graph
 {
 private:
 	int vertex;
-	adjList * arrayList;
+	adjList * arrayList; //arrays of head pointers 
 public:
     graph();
 	~graph();

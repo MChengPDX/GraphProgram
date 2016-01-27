@@ -139,7 +139,8 @@ void School_information::display()
  */
 
 
-
+//constructor for node_dll
+//sets next and prev to nnull
 node_dll::node_dll()
 {
     next = NULL;
@@ -147,32 +148,51 @@ node_dll::node_dll()
 
 }
 
+
+//destructor for node_dll
 node_dll::~node_dll()
 {
 
 }
 
+
+//copy  constructor, pushes up the object to the base class
 node_dll::node_dll(const node_dll & object):School_information(object)
 {
 
 
 }
+
+
+//calls on the school base class copy constructor
 node_dll::node_dll(const School_information & object):School_information(object)
 {
 
 }
 
+
+//copying dynamic memory to base class
 node_dll::node_dll(char *s, char * a, char * n, char * b, char * ag):School_information(s, a, n, b, ag)
 {
 
 }
+
+
+//return the value of next for traversal of the list
 node_dll*&node_dll::get_next()
 {
     return next;
 
 }
 
+
+//return previous value 
 node_dll*&node_dll::get_prev()
 {
     return prev;
 }
+
+/*
+ * End of node_dll implementation
+ *
+ */
