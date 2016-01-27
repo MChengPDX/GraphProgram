@@ -1,3 +1,4 @@
+
 #include"school.h"
 #include<iostream>
 #include<cstring>
@@ -150,7 +151,7 @@ void school::remove_one(int position)
     int lenght = return_lenght();
     if(position > lenght)
     {
-        cout << "The postion to delete is out od context " << endl;
+        cout << "The postion to delete is out of context " << endl;
     }
     else
     {

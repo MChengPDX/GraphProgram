@@ -3,13 +3,16 @@
  * CS 202 Homework 1 
  * Winter 2016
  *
- * adjListNode.h
+ * manager.cp
  *
  */
+ 
+ 
 #include"manager.h"
 #include<iostream>
 
 
+//Test function to check oif household information is loaded into the graph
 void manager::testLoadHouseHold()
 {
     using std::cout;
@@ -25,6 +28,8 @@ void manager::testLoadHouseHold()
 
 }
 
+
+//Test function to test if schools are loaded into the doubly linked list
 void manager::testLoadSchool()
 {
     using std::cout;
@@ -38,6 +43,9 @@ void manager::testLoadSchool()
     o.display_all();
 }
 
+
+//Function to find the top 3 schools that fits in with the current household cencus
+//information
 void manager::findSchool()
 {
     using std::cout;

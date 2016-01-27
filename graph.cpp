@@ -140,12 +140,7 @@ adjListNode::adjListNode(const Household_information & to_copy):Household_inform
 //destructor
 adjListNode::~adjListNode()
 {
-    if(next != NULL)
-    {
-        delete next;
-        next = NULL;
-
-    }
+  
 
 }
 
@@ -246,12 +241,26 @@ graph::~graph()
 //then delete the array
 void graph::remove_all()
 {
+    
+
+      
+    for(int k = 0; k < 2; k++)
+    {
+        adjListNode * temp = arrayList[k].returnHead();  
+        while(temp!=NULL)
+        {
+            adjListNode * current = temp->getNext();
+            delete temp;
+            temp = current;
+        }
+    }
+    
     for(int i = 0; i < 10; i++)
     {
         arrayList[i].setHead();
     }
     delete [] arrayList;
-
+    
 
 
 }

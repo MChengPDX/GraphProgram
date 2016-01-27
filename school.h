@@ -1,6 +1,17 @@
+/*
+ * Michael Cheng
+ * CS 202 Homework 1 
+ * Winter 2016
+ *
+ * School.h
+ *
+ */
+
 #include"node_dll.h"
 #include"adjListNode.h"
 
+//Class school, derieved from graph class. Graph class is represnnetation of a map
+//with graph coordinates, and esstietnally a school is a coordinate plus more
 class school:public graph
 {
     private:
